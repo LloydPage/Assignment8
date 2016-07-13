@@ -4,14 +4,30 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<string.h>
 void insertUp(int*,int);
 void insertDn(int*,int);
 int main()
 {
 	srand(time(NULL));
 	int size;
-	printf("Enter the size of the array\n");
-	scanf("%d",&size);
+	while(1)
+	{
+		int N=3;
+		char *line=malloc(N);
+		printf("Enter the size of the array\n");
+		fgets(line,N,stdin);
+		size_t last=strlen(line);
+		while(line[last-1]!='\n')
+		{
+			N*=2;
+			line=realloc(line,N);
+			fgets(line+last,N/2,stdin);
+			last=strlen(line);
+		}
+		if(sscanf(line,"%d",&size))
+			break;
+	}
 	int *a=(int*)malloc(size*4);
 	for(int i=0;i<size;i++)
 	{
@@ -49,7 +65,7 @@ int main()
 	free(c);
 	return 0;
 }
-void insertUp(int*n,int size)
+void insertDn(int*n,int size)
 {
 	for(int i=0;i<size;i++)
 	{
@@ -64,7 +80,7 @@ void insertUp(int*n,int size)
 		}
 	}
 }
-void insertDn(int*n,int size)
+void insertUp(int*n,int size)
 {
 	for(int i=size-1;i>-1;i--)
 	{
