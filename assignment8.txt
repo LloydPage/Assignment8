@@ -1,0 +1,7 @@
+Lloyd Page
+1. CAN CRASH(potential for infinite while loop)
+char value at 129+130+131+"abc"
+2. 7
+3. 29(infinite while loop)
+4. 29: while((*q++==*b++)!=0) ;
+   32: free(p);
